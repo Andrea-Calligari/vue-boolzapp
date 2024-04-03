@@ -48,24 +48,19 @@
                     </div>
                     <!-- CARD-CONTATTI -->
                     <ul>
-                        <li v-for="currentContact in contacts">
+                        <li v-for="(currentContact,i) in contacts" @click="currentProfile(i)">
                             <div class="card">
                                 <div class="card__header">
                                     <img class="avatar" :src="currentContact.avatar" alt="">
                                 </div>
                                 <div class="card__body">
                                     <h2 class="fs-20">{{currentContact.name}}</h2>
-                                    <p style="font-size: 10px;">Lorem ipsum dolor sit amet.</p>
+                                    <p >Lorem ipsum dolor sit amet.</p>
                                 </div>
                                 <span class="align-center fs-10">16:20</span>
                             </div>
                             
                         </li>
-                        
-                        
-                        
-                        
-                        
                     </ul>
                 </section>
                         <!-- <li>
@@ -175,12 +170,15 @@
                         </li> -->
             </aside>
             <main class="main-content">
+                <!--PER I MESSAGGI <p v-for="messageObj in contacts[currentIndex].messages">
+                    {{ messageObj.message }}
+                </p> -->
                 <header class="chat-nav">
-                    <div class="profile">
-                        <img class="avatar" src="./img/avatar_1.jpg" alt="">
+                    <div class="profile" >
+                        <img class="avatar" :src="contacts[currentIndex].avatar" alt="">
                         <div class="info-profile">
-                            <h4>Michele</h4>
-                            <p style="font-size: 12px;">Ultimo accesso alle ore 16:20</p>
+                            <h4>{{ contacts[currentIndex].name }}</h4>
+                            <p>Ultimo accesso alle ore 16:20</p>
                         </div>
                     </div>
                     <div class="chat-list">
@@ -193,24 +191,19 @@
                 </header>
                 <div class="chat-main">
                     <div class="container-chat">
-                        <div class="msg send">
-                            <p> Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-
-                            </p>
-                            <span class="abs">16:20</span>
-                        </div>
-                        <div class="msg recived">
+                        <div class="msg send" v-for="messageObj in contacts[currentIndex].messages">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
+                                 {{ messageObj.message }}
                             </p>
                             <span class="abs">16:20</span>
                         </div>
+                         <!-- <div class="msg recived">
+                            <p>
+                                
+                               
+                            </p>
+                            <span class="abs">16:20</span> -->
+                        <!-- </div>
                         <div class="msg recived ultimate">
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -224,7 +217,7 @@
                             <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus!
                             </p>
                             <span class="abs">16:20</span>
-                        </div>
+                        </div> --> 
 
 
                     </div>

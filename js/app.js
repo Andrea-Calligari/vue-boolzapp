@@ -174,7 +174,14 @@ createApp({
                         }
                     ]
                 }
-            ]
+            ],
+            currentIndex: 0 
+        }
+    },
+    methods:{
+        currentProfile(i){
+            this.currentIndex = i;
+            
         }
     }
 
