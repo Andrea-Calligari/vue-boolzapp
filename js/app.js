@@ -21,7 +21,7 @@ createApp({
                             status: 'sent'
                         },
                         {
-                           
+
                             date: '10/01/2020 16:15:22',
                             message: 'Tutto fatto!',
                             status: 'received'
@@ -51,8 +51,8 @@ createApp({
                     ],
                 },
                 {
-                
-            
+
+
                     name: 'Samuele',
                     avatar: './img/avatar_3.jpg',
                     visible: true,
@@ -74,7 +74,7 @@ createApp({
 
                         }
                     ],
-                    
+
                 },
                 {
                     name: 'Alessandro B.',
@@ -111,7 +111,7 @@ createApp({
                     ],
                 },
                 {
-                   
+
                     name: 'Claudia',
                     avatar: './img/avatar_6.jpg',
                     visible: true,
@@ -127,7 +127,7 @@ createApp({
                             status: 'received',
                         },
                         {
-                             
+
                             date: '10/01/2020 15:51:00',
                             message: 'Nessuna nuova, buona nuova',
                             status: 'sent',
@@ -135,7 +135,7 @@ createApp({
                     ],
                 },
                 {
-                  
+
                     name: 'Federico',
                     avatar: './img/avatar_7.jpg',
                     visible: true,
@@ -175,27 +175,43 @@ createApp({
                     ]
                 }
             ],
-            currentIndex: 0 ,
-            inputText : ''
+            currentIndex: 0,
+            inputText: ''
         }
     },
-    methods:{
-        currentProfile(i){
+    methods: {
+        currentProfile(i) {
             this.currentIndex = i;
-            
+
         },
-        newMessage(){
+        newMessage() {
             if (this.inputText !== '') {
                 this.contacts[this.currentIndex].messages.push({
-                    message: this.inputText
+                    message: this.inputText,
+                    date: '10/01/2020 15:30:55',
+                    status: 'sent',
                 })
-                
-            }
-            this.valueInput = ''
-        }
-       
 
-        
+                this.inputText = '';
+
+                setTimeout(this.newMessage,1000)
+                this.contacts[this.currentIndex].messages.push({
+                    message: 'Ok',
+                    date: '10/01/2020 15:30:55',
+                    status: 'recived',
+                })
+            }
+        },
+
+
+
+
+
+
+
+
+
+
     }
 
 }).mount('#app')
