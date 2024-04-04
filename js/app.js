@@ -176,7 +176,9 @@ createApp({
                 }
             ],
             currentIndex: 0,
-            inputText: ''
+            inputText: '',
+            inputSearch: '',
+            contactsFiltered : [],
         }
     },
     methods: {
@@ -191,10 +193,7 @@ createApp({
                     date: '10/01/2020 15:30:55',
                     status: 'sent',
                 })
-
                 this.inputText = '';
-
-                setTimeout(this.newMessage,1000)
                 this.contacts[this.currentIndex].messages.push({
                     message: 'Ok',
                     date: '10/01/2020 15:30:55',
@@ -202,16 +201,16 @@ createApp({
                 })
             }
         },
+        searchContacts() {
+            const filtered = this.contacts.filter(contact => {
+                return contact.name.toLowerCase().includes(this.inputSearch.toLowerCase()) === true;
+            });
 
-
-
-
-
-
-
-
-
-
+            this.contactsFiltered = filtered;
+        }
+    },
+    mounted() {
+        this.contactsFiltered = this.contacts;
     }
 
 }).mount('#app')
