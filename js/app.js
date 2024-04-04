@@ -175,14 +175,27 @@ createApp({
                     ]
                 }
             ],
-            currentIndex: 0 
+            currentIndex: 0 ,
+            inputText : ''
         }
     },
     methods:{
         currentProfile(i){
             this.currentIndex = i;
             
+        },
+        newMessage(){
+            if (this.inputText !== '') {
+                this.contacts[this.currentIndex].messages.push({
+                    message: this.inputText
+                })
+                
+            }
+            this.valueInput = ''
         }
+       
+
+        
     }
 
 }).mount('#app')
