@@ -40,7 +40,7 @@
                 </div>
                 <section style="background-color: white;">
                     <div class="search-bar">
-                        <input @keyup.enter="searchContacts()"  v-model="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input @keyup.enter="searchContacts()"  v-model.trim="inputSearch" type="text" placeholder="Cerca o inizia una nuova chat">
                         <!-- <i class="fa-solid fa-magnifying-glass"></i>  -->
                     </div>
                     <!-- CARD-CONTATTI -->
@@ -169,9 +169,9 @@
             <main class="main-content">
                 <header class="chat-nav">
                     <div class="profile" >
-                        <img class="avatar" :src="contacts[currentIndex].avatar" alt="">
+                        <img class="avatar" :src="currentContact.avatar" alt="">
                         <div class="info-profile">
-                            <h4>{{ contacts[currentIndex].name }}</h4>
+                            <h4>{{ currentContact.name }}</h4>
                             <p>Ultimo accesso alle ore 16:20</p>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                 </header>
                 <div class="chat-main">
                     <div class="container-chat">
-                        <div  v-for="messageObj in contacts[currentIndex].messages" :class=" messageObj.status === 'sent' ? 'msg send':'msg recived'" >
+                        <div  v-for="messageObj in currentContact.messages" :class=" messageObj.status === 'sent' ? 'msg send':'msg recived'" >
                             <p >{{ messageObj.message }}</p>
                             <span class="abs">{{messageObj.date.slice(11,16)}}</span>
                         </div>
@@ -196,7 +196,7 @@
                         <div class="emoji">
                             <i class="fa-regular fa-face-smile"></i>
                         </div>
-                        <input @keyup.enter="newMessage()" v-model="inputText" id="message" type="text" placeholder="Scrivi un messaggio">
+                        <input @keyup.enter="newMessage()" v-model.trim="inputText" id="message" type="text" placeholder="Scrivi un messaggio">
                         <div class="rec">
                             <i class="fa-solid fa-microphone"></i>
                         </div>

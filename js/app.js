@@ -181,6 +181,12 @@ createApp({
             contactsFiltered : [],
         }
     },
+    computed: {
+        currentContact: function(){
+            return this.contacts[this.currentIndex]
+        }
+
+    },
     methods: {
         currentProfile(i) {
             this.currentIndex = i;
@@ -188,17 +194,22 @@ createApp({
         },
         newMessage() {
             if (this.inputText !== '') {
-                this.contacts[this.currentIndex].messages.push({
+                this.currentContact.messages.push({
                     message: this.inputText,
                     date: '10/01/2020 15:30:55',
                     status: 'sent',
                 })
                 this.inputText = '';
-                this.contacts[this.currentIndex].messages.push({
-                    message: 'Ok',
-                    date: '10/01/2020 15:30:55',
-                    status: 'recived',
-                })
+                setTimeout(()=> {
+
+                    this.currentContact.messages.push({
+                        message: 'Ok',
+                        date: '10/01/2020 15:30:55',
+                        status: 'recived',
+                    })
+                    
+                }, 1000)
+               
             }
         },
         searchContacts() {
