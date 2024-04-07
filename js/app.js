@@ -184,6 +184,9 @@ createApp({
     computed: {
         currentContact: function(){
             return this.contacts[this.currentIndex]
+        },
+        currentChat(){
+            return  this.currentContact.messages
         }
 
     },
@@ -194,7 +197,7 @@ createApp({
         },
         newMessage() {
             if (this.inputText !== '') {
-                this.currentContact.messages.push({
+                this.currentChat.push({
                     message: this.inputText,
                     date: '10/01/2020 15:30:55',
                     status: 'sent',
@@ -202,7 +205,7 @@ createApp({
                 this.inputText = '';
                 setTimeout(()=> {
 
-                    this.currentContact.messages.push({
+                    this.currentChat.push({
                         message: 'Ok',
                         date: '10/01/2020 15:30:55',
                         status: 'recived',

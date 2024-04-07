@@ -185,7 +185,7 @@
                 </header>
                 <div class="chat-main">
                     <div class="container-chat">
-                        <div  v-for="messageObj in currentContact.messages" :class=" messageObj.status === 'sent' ? 'msg send':'msg recived'" >
+                        <div  v-for="messageObj in currentChat" :class=" messageObj.status === 'sent' ? 'msg send':'msg recived'" >
                             <p >{{ messageObj.message }}</p>
                             <span class="abs">{{messageObj.date.slice(11,16)}}</span>
                         </div>
